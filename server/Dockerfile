@@ -20,7 +20,7 @@ RUN chmod +x /usr/bin/giddyup /usr/bin/cluster-manager
 COPY bin/* /usr/bin/
 
 ENV CATTLE_HOME /var/lib/cattle
-ENV DEFAULT_CATTLE_API_UI_INDEX //releases.rancher.com/ui/1.0.7
+ENV DEFAULT_CATTLE_API_UI_INDEX //github.com/liu-jerry/ui/releases/download/1.0.8
 ENV CATTLE_DB_CATTLE_DATABASE mysql
 ENV CATTLE_USE_LOCAL_ARTIFACTS true
 ENV no_proxy localhost,127.0.0.1,localaddress,.localdomain.com
@@ -41,8 +41,8 @@ ENV DEFAULT_CATTLE_RANCHER_COMPOSE_WINDOWS_URL https://releases.rancher.com/comp
 ENV DEFAULT_CATTLE_CATALOG_URL="library=https://github.com/rancher/rancher-catalog.git,community=https://github.com/rancher/community-catalog.git"
 
 EXPOSE 3306
-ENV CATTLE_CATTLE_VERSION v0.160.3
-ADD https://github.com/rancherio/cattle/releases/download/${CATTLE_CATTLE_VERSION}/cattle.jar /usr/share/cattle/
+ENV CATTLE_CATTLE_VERSION v0.160.3-mt
+ADD https://github.com/liu-jerry/cattle/releases/download/${CATTLE_CATTLE_VERSION}/cattle.jar /usr/share/cattle/
 
 RUN cd / && for i in $(ls /s6-statics/*static.tar.gz);do tar -zxvf $i;done && rm -rf /s6-statics/*static.tar.gz && \
     mkdir -p $CATTLE_HOME && \
